@@ -27,6 +27,14 @@ export const addCatToDislikes = async catId => {
 export const addCatToFavourites = async catId => {
   await axios.post(`/favourites?api_key=${API_KEY}`, {
     image_id: catId,
-    sub_id: API_KEY
+    sub_id: API_KEY,
   });
+};
+
+export const getBreeds = async limit => {
+  const response = await axios.get(`/breeds?api_key=${API_KEY}?`, {
+    limit: limit,
+  });
+
+  return response.data;
 };
