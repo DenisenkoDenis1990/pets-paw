@@ -16,7 +16,7 @@ export const Voting = () => {
 
   const [randomCat, setRandomCat] = useState({});
   useEffect(() => {
-    getRandomCat()
+    getRandomCat(1)
       .then(setRandomCat)
       .catch(error => {
         console.log(error);
