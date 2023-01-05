@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { TopMenu } from 'components/TopMenu';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 export const CatInfo = () => {
   const location = useLocation();
   //   const { cat } = location.state;
