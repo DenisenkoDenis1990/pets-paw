@@ -1,4 +1,3 @@
-import { type } from '@testing-library/user-event/dist/type';
 import axios from 'axios';
 
 const API_KEY =
