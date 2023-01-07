@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type';
 import axios from 'axios';
 
 const API_KEY =
@@ -37,7 +38,22 @@ export const addCatToFavourites = async catId => {
   });
 };
 
-export const getBreeds = async () => {
-  const response = await axios.get(`/breeds?api_key=${API_KEY}?`);
+export const getBreeds = async limit => {
+  const response = await axios.get(`/breeds?api_key=${API_KEY}?`, {
+    params: {
+      limit: limit,
+    },
+  });
+  return response.data;
+};
+
+export const getImagesForGallery = async (limit, cat, order) => {
+  const response = await axios.get(`/images/search?api_key=${API_KEY}?`, {
+    params: {
+      limit: limit,
+      breed_ids: cat,
+      order: order,
+    },
+  });
   return response.data;
 };

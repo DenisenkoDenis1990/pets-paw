@@ -1,11 +1,10 @@
 import { TopMenu } from 'components/TopMenu';
 import { useState, useEffect, useRef } from 'react';
-import { getBreeds, getRandomCat } from 'utils/catsApi';
+import { getBreeds } from 'utils/catsApi';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Breeds = () => {
   const [breeds, setBreeds] = useState([]);
-  const [cats, setCats] = useState([]);
   const [filter, setFilter] = useState('');
   const location = useLocation();
   const backPathUrl = useRef(location.state?.from ?? '/');
@@ -14,15 +13,12 @@ export const Breeds = () => {
     getBreeds('')
       .then(setBreeds)
       .catch(error => console.log(error));
-    getRandomCat(5)
-      .then(setCats)
-      .catch(error => console.log(error));
   }, []);
 
   const limitHandler = event => {
     console.log(event.currentTarget.value);
-    getRandomCat(event.currentTarget.value)
-      .then(setCats)
+    getBreeds(event.currentTarget.value)
+      .then(setBreeds)
       .catch(error => console.log(error));
   };
 
@@ -30,11 +26,11 @@ export const Breeds = () => {
     setFilter(event.currentTarget.value);
   };
 
-  let filteredCats = cats.filter(cat => {
+  let filteredCats = breeds.filter(cat => {
     if (filter === 'all') {
       return cat;
     }
-    return cat.breeds[0].id.includes(filter);
+    return cat.id.includes(filter);
   });
 
   return (
@@ -55,7 +51,12 @@ export const Breeds = () => {
             </option>
           ))}
         </select>
-        <select name="limit" defaultValue={'Limit: 5'} onInput={limitHandler}>
+        <select
+          name="limit"
+          defaultValue={'Limit: Unlimited'}
+          onInput={limitHandler}
+        >
+          <option value="all">Limit: Unlimited</option>
           <option value={5}>Limit: 5</option>
           <option value={10}>Limit: 10</option>
           <option value={15}>Limit: 15</option>
@@ -74,7 +75,7 @@ export const Breeds = () => {
           ) : (
             <Link to={`/${cat.id}`} state={{ cat: cat }}>
               <img
-                src={cat.url}
+                src={cat.image.url}
                 alt={cat.name}
                 key={cat.id}
                 className="w-[100px] h-[100px] backgroud bg-cover bg-center"
