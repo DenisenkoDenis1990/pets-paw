@@ -56,3 +56,17 @@ export const getImagesForGallery = async (limit, cat, order) => {
   });
   return response.data;
 };
+
+export const getFavourites = async () => {
+  const response = await axios.get(
+    `https://api.thecatapi.com/v1/favourites?api_key=${API_KEY}`
+  );
+  return response.data;
+};
+
+export const getVotes = async () => {
+  const response = await axios.get(
+    `https://api.thecatapi.com/v1/votes?api_key=${API_KEY}`
+  );
+  return response.data;
+};

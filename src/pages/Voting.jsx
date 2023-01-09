@@ -12,7 +12,9 @@ export const Voting = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const backPathUrl = useRef(location.state?.from ?? '/');
-  const userLog = [];
+  const [userLog, setUserLog] = useState(
+    JSON.parse(localStorage.getItem('userLog')) ?? []
+  );
 
   const [randomCat, setRandomCat] = useState({});
   useEffect(() => {
@@ -22,14 +24,55 @@ export const Voting = () => {
         console.log(error);
         navigate(backPathUrl.current, { replace: true });
       });
+    localStorage.setItem('userLog', JSON.stringify(userLog));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const LikesHandler = () => {
+  }, [userLog]);
+  const likesHandler = () => {
     addCatToLikes(randomCat.id);
-    userLog.push(`Image ID: ${randomCat.id} was opened`);
-    console.log(userLog);
+    getRandomCat(1)
+      .then(setRandomCat)
+      .catch(error => {
+        console.log(error);
+      });
+    setUserLog(prevState => [
+      ...prevState,
+      {
+        date: Date.now(),
+        message: `Image ID: ${randomCat.id} was added to Likes`,
+      },
+    ]);
   };
-  console.log(userLog);
+  const dislikesHandler = () => {
+    addCatToDislikes(randomCat.id);
+    getRandomCat(1)
+      .then(setRandomCat)
+      .catch(error => {
+        console.log(error);
+      });
+    setUserLog(prevState => [
+      ...prevState,
+      {
+        date: Date.now(),
+        message: `Image ID: ${randomCat.id} was added to Dislikes`,
+      },
+    ]);
+  };
+  const favsHandler = () => {
+    addCatToFavourites(randomCat.id);
+    getRandomCat(1)
+      .then(setRandomCat)
+      .catch(error => {
+        console.log(error);
+      });
+    setUserLog(prevState => [
+      ...prevState,
+      {
+        date: Date.now(),
+        message: `Image ID: ${randomCat.id} was added to Favourites`,
+      },
+    ]);
+  };
+
   return (
     <div>
       <TopMenu />
@@ -37,32 +80,27 @@ export const Voting = () => {
         <Link to={backPathUrl.current}>Back</Link>
         <h1>VOTING</h1>
         <img src={randomCat.url} alt={randomCat.id}></img>
-        <button tupe="button" onClick={LikesHandler}>
+        <button tupe="button" onClick={likesHandler}>
           Add to likes
         </button>
-        <button
-          tupe="button"
-          onClick={() => {
-            addCatToFavourites(randomCat.id);
-          }}
-        >
+        <button tupe="button" onClick={favsHandler}>
           Add to favoutites
         </button>
-        <button
-          tupe="button"
-          onClick={() => {
-            addCatToDislikes(randomCat.id);
-          }}
-        >
+        <button tupe="button" onClick={dislikesHandler}>
           Add to dislikes
         </button>
-
-        <ul>
-          {userLog.map(log => (
-            <li>{log}</li>
-          ))}
-        </ul>
       </div>
+      <ul>
+        {userLog.reverse().map(log => {
+          let dateString = log.date.toString();
+          console.log(typeof dateString);
+          return (
+            <li>
+              <p>{log.message}</p>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
