@@ -70,3 +70,19 @@ export const getVotes = async () => {
   );
   return response.data;
 };
+
+export const removeImageFromFavs = async favouriteId => {
+  var requestOptions = {
+    method: 'DELETE',
+    headers: { 'x-api-key': API_KEY },
+  };
+
+  await fetch(
+    `https://api.thecatapi.com/v1/favourites/${favouriteId}`,
+    requestOptions
+  ).then(response => {
+    if (response.status === 200) {
+      getFavourites();
+    }
+  });
+};

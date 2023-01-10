@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFavourites } from 'utils/catsApi';
+import { removeImageFromFavs } from 'utils/catsApi';
 
 export const Favourites = () => {
   const [favs, setFavs] = useState([]);
@@ -17,6 +18,14 @@ export const Favourites = () => {
           return (
             <li key={fav.id}>
               <img src={fav.image.url} alt={fav.image.id}></img>
+              <button
+                type="button"
+                onClick={() => {
+                  removeImageFromFavs(fav.id);
+                }}
+              >
+                Remove
+              </button>
             </li>
           );
         })}
