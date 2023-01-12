@@ -6,6 +6,7 @@ import {
   addCatToDislikes,
   addCatToFavourites,
 } from 'utils/catsApi';
+import { ReactComponent as BackIcon } from 'icons/back-20.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export const Voting = () => {
@@ -76,13 +77,22 @@ export const Voting = () => {
   return (
     <div>
       <TopMenu />
-      <div>
-        <Link to={backPathUrl.current}>Back</Link>
-        <h1>VOTING</h1>
+      <div className="mt-[10px] p-[20px] bg-white rounded-[20px]">
+        <div className="flex justify-start items-center pb-[20px]">
+          <Link
+            to={backPathUrl.current}
+            className="inline-block group bg-[#FBE0DC] py-[10px] px-[14px] rounded-[10px] hover:bg-[#FF868E] mr-[10px]"
+          >
+            <BackIcon className="fill-[#FF868E] group-hover:fill-white" />
+          </Link>
+          <h1 className="py-[5px] px-[30px] text-[20px] text-center text-white bg-[#FF868E] rounded-[10px] tracking-[2px] leading-[30px]">
+            VOTING
+          </h1>
+        </div>
         <img
           src={randomCat.url}
           alt={randomCat.id}
-          className="max-[640px]"
+          className="max-[640px] h-[360px] bg-center bg-no-repeat bg-contain rounded-[20px] mx-auto"
         ></img>
         <button tupe="button" onClick={likesHandler}>
           Add to likes

@@ -15,39 +15,39 @@ export const TopMenu = () => {
           />
           <button
             type="submit"
-            className="absolute inset-y-0 right-[40px] p-[10px] my-[10px] bg-[#FBE0DC] rounded-[10px] group-hover:bg-[#FF868E]"
+            className="absolute inset-y-0 right-[10px] p-[10px] my-[10px] bg-[#FBE0DC] rounded-[10px] group-hover:bg-[#FF868E]"
           >
             <SearchIcon className="fill-[#FF868E] group-hover:fill-white" />
           </button>
         </form>
         <ul className="flex">
-          <li>
+          <li className="mr-[10px] group">
             <Link to={'/likes'}>
               <button
                 type="button"
-                className="p-[15px] bg-white rounded-[20px] mr-[10px]"
+                className="p-[15px] bg-white rounded-[20px] group-hover:bg-[#FBE0DC] group-active:bg-[#FF868E]"
               >
-                <LikeIcon />
+                <LikeIcon className="fill-[#FF868E] group-active:fill-[#FFFFFF]" />
               </button>
             </Link>
           </li>
-          <li>
+          <li className="mr-[10px] group">
             <Link to={'/favourites'}>
               <button
                 type="button"
-                className="p-[15px] bg-white rounded-[20px] mr-[10px]"
+                className="p-[15px] bg-white rounded-[20px] group-hover:bg-[#FBE0DC] group-active:bg-[#FF868E]"
               >
-                <FavIcon />
+                <FavIcon className="fill-[#FF868E] group-active:fill-[#FFFFFF]" />
               </button>
             </Link>
           </li>
-          <li>
+          <li className="group">
             <Link to={'/dislikes'}>
               <button
                 type="button"
-                className="p-[15px] bg-white rounded-[20px] mr-[10px]"
+                className="p-[15px] bg-white rounded-[20px] group-hover:bg-[#FBE0DC] group-active:bg-[#FF868E]"
               >
-                <DislikeIcon />
+                <DislikeIcon className="fill-[#FF868E] group-active:fill-[#FFFFFF]" />
               </button>
             </Link>
           </li>

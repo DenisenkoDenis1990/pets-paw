@@ -6,7 +6,7 @@ import galleryLogo from 'images/images-search.png';
 
 export const AppMenu = () => {
   return (
-    <div>
+    <div className="w-1/2">
       <a href="*">
         <img src={logo} alt="Logo" className="mb-[75px]" />
       </a>
@@ -20,7 +20,7 @@ export const AppMenu = () => {
         Lets start using Cat API
       </h2>
 
-      <ul className="flex justify-center align-center ml-[6px]">
+      <ul className="flex justify-start align-center ">
         <li className="mr-[10px] group">
           <Link to={'voting'}>
             <div className="mb-[10px] bg-[#B4B7FF] rounded-[20px] border-[4px] border-[rgba(255, 255, 255, 0.6)] group-hover:border-[#FFFFFF]">
