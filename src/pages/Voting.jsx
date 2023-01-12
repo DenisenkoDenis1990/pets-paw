@@ -79,7 +79,11 @@ export const Voting = () => {
       <div>
         <Link to={backPathUrl.current}>Back</Link>
         <h1>VOTING</h1>
-        <img src={randomCat.url} alt={randomCat.id}></img>
+        <img
+          src={randomCat.url}
+          alt={randomCat.id}
+          className="max-[640px]"
+        ></img>
         <button tupe="button" onClick={likesHandler}>
           Add to likes
         </button>
