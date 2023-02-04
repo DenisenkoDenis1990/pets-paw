@@ -7,6 +7,9 @@ import {
   addCatToFavourites,
 } from 'utils/catsApi';
 import { ReactComponent as BackIcon } from 'icons/back-20.svg';
+import { ReactComponent as LikeIcon } from 'icons/like-white-30.svg';
+import { ReactComponent as FavIcon } from 'icons/fav-white-30.svg';
+import { ReactComponent as DislikeIcon } from 'icons/dislike-white-30.svg';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export const Voting = () => {
@@ -54,7 +57,7 @@ export const Voting = () => {
       ...prevState,
       {
         date: Date.now(),
-        message: `Image ID: ${randomCat.id} was added to Dislikes`,
+        message: `date Image ID: ${randomCat.id} was added to Dislikes`,
       },
     ]);
   };
@@ -89,32 +92,65 @@ export const Voting = () => {
             VOTING
           </h1>
         </div>
-        <img
-          src={randomCat.url}
-          alt={randomCat.id}
-          className="max-[640px] h-[360px] bg-center bg-no-repeat bg-contain rounded-[20px] mx-auto"
-        ></img>
-        <button tupe="button" onClick={likesHandler}>
-          Add to likes
-        </button>
-        <button tupe="button" onClick={favsHandler}>
-          Add to favoutites
-        </button>
-        <button tupe="button" onClick={dislikesHandler}>
-          Add to dislikes
-        </button>
+        <div className="relative mb-[52px]">
+          <img
+            src={randomCat.url}
+            alt={randomCat.id}
+            className="max-[640px] h-[360px] bg-center bg-no-repeat bg-contain rounded-[20px] mx-auto"
+          ></img>
+          <div className="absolute bottom-[-40px] left-[30%] ">
+            <button
+              tupe="button"
+              onClick={likesHandler}
+              className="group bg-[#97EAB9] hover:bg-[rgba(151,234,186,0.5)] p-[25px] border-l-[4px] border-t-[4px] border-b-[4px] border-[solid] border-[#FFFFFF] rounded-l-[20px]"
+            >
+              <LikeIcon className="fill-white group-hover:fill-[#97EAB9]" />
+            </button>
+            <button
+              tupe="button"
+              onClick={favsHandler}
+              className="group bg-[#FF868E] hover:bg-[rgba(255,134,142,0.3)] p-[25px] border-[4px] border-[solid] border-[#FFFFFF]"
+            >
+              <FavIcon className="fill-white group-hover:fill-[#FF868E]" />
+            </button>
+            <button
+              tupe="button"
+              onClick={dislikesHandler}
+              className="group bg-[#FFD280] hover:bg-[rgba(255,210,128,0.3)] p-[25px] border-r-[4px] border-t-[4px] border-b-[4px] border-[solid] border-[#FFFFFF] rounded-r-[20px]"
+            >
+              <DislikeIcon className="fill-white group-hover:fill-[#FFD280]" />
+            </button>
+          </div>
+        </div>
+        <ul>
+          {userLog.reverse().map(log => {
+            let dateString = log.date.toString();
+            console.log(dateString);
+            return (
+              <li className="bg-[#F8F8F7] mb-[10px] p-[20px] rounded-[10px]">
+                {log.message.includes('Dislikes') && (
+                  <p className="flex align-center justify-between">
+                    {log.message}{' '}
+                    <DislikeIcon className="fill-[#FFD280] w-[20px] h-[20px]" />
+                  </p>
+                )}
+                {log.message.includes('Likes') && (
+                  <p className="flex align-center justify-between">
+                    {log.message}{' '}
+                    <LikeIcon className="fill-[#97EAB9] w-[20px] h-[20px]" />
+                  </p>
+                )}
+                {log.message.includes('Favourites') && (
+                  <p className="flex align-center justify-between">
+                    {log.message}{' '}
+                    <FavIcon className="fill-[#FF868E] w-[20px] h-[20px]" />
+                  </p>
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </div>
-      <ul>
-        {userLog.reverse().map(log => {
-          let dateString = log.date.toString();
-          console.log(typeof dateString);
-          return (
-            <li>
-              <p>{log.message}</p>
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 };
