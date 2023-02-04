@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.css": "/pets-paw/static/css/main.483d2d19.css",
-    "main.js": "/pets-paw/static/js/main.91021b75.js",
+    "main.css": "/pets-paw/static/css/main.efb3c986.css",
+    "main.js": "/pets-paw/static/js/main.5cf42d87.js",
     "static/media/images-search.png": "/pets-paw/static/media/images-search.69ba4bdb455e5c8cd127.png",
     "static/media/vote-table.png": "/pets-paw/static/media/vote-table.9374b8e100d7741e1f70.png",
     "static/media/pet-breeds.png": "/pets-paw/static/media/pet-breeds.f93666435f7dee0dbc91.png",
     "index.html": "/pets-paw/index.html",
     "static/media/search-20.svg": "/pets-paw/static/media/search-20.b2b798d638f617e27353cc169ba4cd1b.svg",
     "static/media/fav-30.svg": "/pets-paw/static/media/fav-30.232c2b8a1f7ab9207d98395354a77ebd.svg",
+    "static/media/fav-white-30.svg": "/pets-paw/static/media/fav-white-30.232c2b8a1f7ab9207d98395354a77ebd.svg",
     "static/media/dislike-30.svg": "/pets-paw/static/media/dislike-30.36db623ded8bfb88743b40a0404d1fef.svg",
+    "static/media/dislike-white-30.svg": "/pets-paw/static/media/dislike-white-30.f588466bda9c47a281284605f72f5cd2.svg",
     "static/media/like-30.svg": "/pets-paw/static/media/like-30.2ff34b4427e039770dcd9bf4ac7ea1d1.svg",
+    "static/media/like-white-30.svg": "/pets-paw/static/media/like-white-30.a480fc543fc2d2375792a545d3cfe19d.svg",
     "static/media/back-20.svg": "/pets-paw/static/media/back-20.069d6f4ea1e8bb1d0c6da781cc2df2a3.svg",
-    "main.483d2d19.css.map": "/pets-paw/static/css/main.483d2d19.css.map",
-    "main.91021b75.js.map": "/pets-paw/static/js/main.91021b75.js.map"
+    "main.efb3c986.css.map": "/pets-paw/static/css/main.efb3c986.css.map",
+    "main.5cf42d87.js.map": "/pets-paw/static/js/main.5cf42d87.js.map"
   },
   "entrypoints": [
-    "static/css/main.483d2d19.css",
-    "static/js/main.91021b75.js"
+    "static/css/main.efb3c986.css",
+    "static/js/main.5cf42d87.js"
   ]
 }
